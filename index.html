@@ -1,19 +1,20 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102c4c"><link rel="manifest" href="./manifest.webmanifest"><title>Solar Charge Adviser V3</title>
-<style>body{margin:0;background:#edf3f8;font:16px system-ui,Arial;color:#142d45}.wrap{max-width:520px;margin:auto;padding:16px}.head{background:#102c4c;color:white;padding:22px;border-radius:18px}h1{font-size:25px;margin:0 0 5px}.muted{color:#64748b}.head small{color:#cbd5e1}.card{background:white;border-radius:16px;padding:18px;margin-top:14px;box-shadow:0 3px 14px #0c294011}label{display:block;font-weight:650;margin:12px 0 6px}input{width:100%;box-sizing:border-box;padding:11px;border:1px solid #aebdcc;border-radius:9px;font-size:17px}button{background:#145f8b;color:white;border:0;border-radius:10px;padding:12px;font-weight:700;font-size:16px;width:100%;margin-top:12px}.secondary{background:#e5f0f6;color:#174563}.big{font-size:64px;font-weight:800;color:#087a62}.bar{height:18px;background:#d9e4ed;border-radius:15px;overflow:hidden}.fill{height:100%;background:#0c9674;width:0}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#edf5f8;border-radius:10px;padding:12px}.metric b{display:block;font-size:21px;margin-top:6px}.foot{font-size:13px;line-height:1.6}.status{font-size:14px}details{margin-top:12px}summary{cursor:pointer;font-weight:700} .notice{background:#fff5df;padding:10px;border-radius:9px;font-size:14px}a{color:#145f8b}</style></head><body><main class="wrap">
-<header class="head"><h1>☀️ Solar Charge Adviser <span style="font-size:13px">V3</span></h1><small>Heywood · 3.99 kWp south · 35° · 5.0 kWh nominal battery</small></header>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102c4c"><link rel="manifest" href="./manifest.webmanifest"><title>Solar Charge Adviser V4</title>
+<style>body{margin:0;background:#edf3f8;font:16px system-ui,Arial;color:#142d45}.wrap{max-width:520px;margin:auto;padding:16px}.head{background:#102c4c;color:white;padding:22px;border-radius:18px}h1{font-size:25px;margin:0 0 5px}.muted{color:#64748b}.head small{color:#cbd5e1}.card{background:white;border-radius:16px;padding:18px;margin-top:14px;box-shadow:0 3px 14px #0c294011}label{display:block;font-weight:650;margin:12px 0 6px}input{width:100%;box-sizing:border-box;padding:11px;border:1px solid #aebdcc;border-radius:9px;font-size:17px}button{background:#145f8b;color:white;border:0;border-radius:10px;padding:12px;font-weight:700;font-size:16px;width:100%;margin-top:12px}.secondary{background:#e5f0f6;color:#174563}.big{font-size:64px;font-weight:800;color:#087a62}.bar{height:18px;background:#d9e4ed;border-radius:15px;overflow:hidden}.fill{height:100%;background:#0c9674;width:0}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#edf5f8;border-radius:10px;padding:12px}.metric b{display:block;font-size:21px;margin-top:6px}.foot{font-size:13px;line-height:1.6}.status{font-size:14px}details{margin-top:12px}summary{cursor:pointer;font-weight:700} .chartkey{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;margin:10px 0}.chartkey span{display:inline-flex;align-items:center;gap:5px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.scroll{overflow-x:auto} .notice{background:#fff5df;padding:10px;border-radius:9px;font-size:14px}a{color:#145f8b}</style></head><body><main class="wrap">
+<header class="head"><h1>☀️ Solar Charge Adviser <span style="font-size:13px">V4</span></h1><small>Heywood · 3.99 kWp south · 35° · 5.0 kWh nominal battery</small></header>
 <section class="card"><div class="muted">Tomorrow's forecast</div><div class="metrics" style="margin-top:12px"><div class="metric">Solar generation<b id="solar">—</b></div><div class="metric">Risk-adjusted solar<b id="adjusted">—</b></div></div><p class="status" id="status">Fetching forecast…</p><button id="refresh">Refresh live forecast</button></section>
 <section class="card"><label for="soc">Current battery charge (%)</label><input id="soc" type="number" min="10" max="99" value="85"><label for="use">House consumption 05:30–23:30 (kWh)</label><input id="use" type="number" min="0" max="30" step="0.5" value="9.5"><p class="foot muted">Exclude battery charging. Initial estimate: 9.5 kWh. We spread consumption across the day using an adjustable estimated hourly profile.</p>
 <details><summary>Testing: simulate a different solar forecast</summary><label for="test">Manual solar generation (kWh, blank = live)</label><input id="test" type="number" min="0" max="40" step="0.5" placeholder="e.g. 10"><p class="foot muted">Testing scales tomorrow's forecast hourly shape to this total; it is not a new weather forecast.</p></details>
 <details><summary>Advanced settings</summary><label for="margin">Solar forecast safety margin (%)</label><input id="margin" type="number" min="0" max="60" value="25"><label for="eff">Battery round-trip efficiency (%)</label><input id="eff" type="number" min="65" max="100" value="90"><label for="yield">PV performance factor (%)</label><input id="yield" type="number" min="40" max="110" value="80"><label for="morning">Share of consumption 05:30–09:30 (%)</label><input id="morning" type="number" min="0" max="60" value="20"><label for="day">Share of consumption 09:30–16:30 (%)</label><input id="day" type="number" min="0" max="80" value="40"><p class="foot muted">Remaining household consumption is allocated to 16:30–23:30. Adjust from Qendercore hourly readings later.</p></details></section>
 <section class="card"><div class="muted">Recommended force-charge target</div><div class="big" id="target">—</div><div class="bar"><div class="fill" id="fill"></div></div><p id="reason">Waiting for forecast.</p><div class="metrics"><div class="metric">Grid energy to add tonight<b id="extra">—</b></div><div class="metric">Estimated charging cost<b id="cost">—</b></div><div class="metric">Modelled peak grid import<b id="peak">—</b></div><div class="metric">Modelled unused solar<b id="spill">—</b></div></div><p class="foot muted">Set target manually on Soltaro during 23:30–05:30. 10% minimum, 99% maximum. Current battery % is used for estimating the top-up cost, not to predict tomorrow's starting level.</p></section>
-<section class="card foot"><b>How V3 works</b><p>Models each forecast hour from 05:30 to 23:30, with proportional half-hours at the start/end. Solar serves household load first, then charges the battery. Battery supplies remaining household demand down to 10%. The model compares targets from 10% to 99%, balancing overnight purchase cost, peak-rate imports and unused solar.</p><p class="notice">This is an advisory estimate, not an inverter control or a guarantee. The hourly household demand pattern is estimated. Battery power limits, unusual appliance use and solar forecast errors can change the best target. If forecasts fail, no target is issued.</p><p>Tariffs: 6.57p/kWh overnight, 28.39p/kWh peak. Your deemed FIT export payments are not reduced by actual export under the assumed arrangement. Weather: <a href="https://open-meteo.com/">Open-Meteo</a>.</p></section></main>
+<section class="card"><b>Predicted battery charge throughout tomorrow</b><p class="foot muted">Starting at the recommended overnight target. The line estimates battery charge from 05:30 to 23:30, allowing for hourly solar production and household use.</p><div class="chartkey"><span><i class="dot" style="background:#0c9674"></i>Battery %</span><span><i class="dot" style="background:#e4a12a"></i>Solar generation (kWh/h)</span></div><div class="scroll"><svg id="chart" viewBox="0 0 500 255" role="img" aria-label="Predicted battery state of charge by time" style="width:100%;min-width:310px"></svg></div><p id="chartSummary" class="foot muted">Waiting for forecast.</p><details><summary>Show hourly battery estimates</summary><div class="scroll"><table style="width:100%;border-collapse:collapse;font-size:13px" id="hourlyTable"></table></div></details><p class="foot muted">The green line uses battery % (left axis); the gold line uses solar kWh per hour (right axis). This is a model, not live inverter data.</p></section>
+<section class="card foot"><b>How V4 works</b><p>Models each forecast hour from 05:30 to 23:30, with proportional half-hours at the start/end. Solar serves household load first, then charges the battery. Battery supplies remaining household demand down to 10%. The model compares targets from 10% to 99%, balancing overnight purchase cost, peak-rate imports and unused solar.</p><p class="notice">This is an advisory estimate, not an inverter control or a guarantee. The hourly household demand pattern is estimated. Battery power limits, unusual appliance use and solar forecast errors can change the best target. If forecasts fail, no target is issued.</p><p>Tariffs: 6.57p/kWh overnight, 28.39p/kWh peak. Your deemed FIT export payments are not reduced by actual export under the assumed arrangement. Weather: <a href="https://open-meteo.com/">Open-Meteo</a>.</p></section></main>
 <script>
 const PV=3.99,CAP=5,MIN=10,MAX=99,NIGHT=.0657,PEAK=.2839,LAT=53.59,LON=-2.22;
 const $=id=>document.getElementById(id),clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 let hourly=null,forecastDate='';
 function num(id,def){let v=Number($(id).value);return $(id).value.trim()!==''&&Number.isFinite(v)?v:def}
-function simulation(target, solar, demand, eff){
- let energy=CAP*target/100, minE=CAP*MIN/100, grid=0, spill=0;
+function simulation(target, solar, demand, eff, trace=false){
+ let energy=CAP*target/100, minE=CAP*MIN/100, grid=0, spill=0, points=[{time:"05:30",soc:target,solar:0}];
  // 18 peak-rate hours: 05:30–23:30, with hourly buckets weighted at boundaries.
  for(let h=5;h<=23;h++){
    let portion=h===5||h===23?.5:1;
@@ -21,11 +22,33 @@ function simulation(target, solar, demand, eff){
    let net=pv-load;
    if(net>=0){let stored=Math.min(net*Math.sqrt(eff),CAP*MAX/100-energy);energy+=stored;spill+=Math.max(0,net-stored/Math.sqrt(eff));}
    else {let needed=-net, fromBattery=Math.min(needed,(energy-minE)*Math.sqrt(eff));energy-=fromBattery/Math.sqrt(eff);grid+=needed-fromBattery;}
+   if(trace)points.push({time:h===23?"23:30":String(h+1).padStart(2,"0")+":00",soc:energy/CAP*100,solar:pv});
  }
- return {grid,spill};
+ return {grid,spill,points};
 }
+
+function renderChart(points){
+ const svg=$('chart'), table=$('hourlyTable');
+ if(!points||points.length<2){svg.innerHTML='';table.innerHTML='';$('chartSummary').textContent='No forecast available.';return}
+ const L=46,R=456,T=20,B=211,W=R-L,H=B-T;
+ const x=i=>L+i/(points.length-1)*W, ySoc=v=>B-v/100*H;
+ const maxSolar=Math.max(1,...points.map(p=>p.solar))*1.1, ySolar=v=>B-v/maxSolar*H;
+ const path=(fn)=>points.map((p,i)=>(i?'L':'M')+x(i).toFixed(1)+','+fn(p).toFixed(1)).join(' ');
+ let out='';
+ for(let v=0;v<=100;v+=25){let y=ySoc(v);out+=`<line x1="${L}" y1="${y}" x2="${R}" y2="${y}" stroke="#dce5eb"/><text x="${L-7}" y="${y+4}" text-anchor="end" font-size="12" fill="#61778b">${v}%</text>`}
+ for(let i=0;i<points.length;i++){if(i===0||i===4||i===8||i===12||i===16||i===points.length-1){out+=`<text x="${x(i)}" y="${B+20}" text-anchor="middle" font-size="11" fill="#61778b">${points[i].time}</text>`}}
+ out+=`<path d="${path(p=>ySolar(p.solar))}" fill="none" stroke="#e4a12a" stroke-width="2.5" stroke-linejoin="round"/>`;
+ out+=`<path d="${path(p=>ySoc(p.soc))}" fill="none" stroke="#0c9674" stroke-width="3.5" stroke-linejoin="round"/>`;
+ out+=`<text x="${R}" y="12" text-anchor="end" font-size="11" fill="#a06c17">Solar scale max ${maxSolar.toFixed(1)} kWh/h</text>`;
+ svg.innerHTML=out;
+ const lowest=Math.min(...points.map(p=>p.soc)),highest=Math.max(...points.map(p=>p.soc)),last=points[points.length-1].soc;
+ const reached=points.find(p=>p.soc>=98.9);
+ $('chartSummary').textContent=`Lowest predicted battery: ${lowest.toFixed(0)}%. Highest: ${highest.toFixed(0)}%. At 23:30: ${last.toFixed(0)}%. `+(reached?`Reaches 99% around ${reached.time}.`:'Does not reach 99% during the modelled day.');
+ table.innerHTML='<tr><th style="text-align:left">Time</th><th>Battery</th><th>Solar</th></tr>'+points.map(p=>`<tr style="border-top:1px solid #dce5eb"><td style="padding:6px 2px">${p.time}</td><td style="text-align:center">${p.soc.toFixed(0)}%</td><td style="text-align:center">${p.solar.toFixed(2)} kWh</td></tr>`).join('');
+}
+
 function calc(){
- if(!hourly){$('target').textContent='—';$('reason').textContent='No forecast available: use your normal inverter schedule.';return}
+ if(!hourly){renderChart(null);$('target').textContent='—';$('reason').textContent='No forecast available: use your normal inverter schedule.';return}
  const factor=clamp(num('yield',80),40,110)/100,margin=clamp(num('margin',25),0,60)/100,eff=clamp(num('eff',90),65,100)/100;
  let solar=hourly.map(x=>Math.max(0,x)*PV*factor/1000);
  let actual=solar.reduce((a,b)=>a+b,0);
@@ -53,12 +76,13 @@ function calc(){
   if(!best||score<best.score-0.00001)best={target:t,score,...sim};
  }
  // Prefer rounding UP to 5% without exceeding 99%, for simple inverter entry.
- let t=Math.min(MAX,Math.ceil(best.target/5)*5),sim=simulation(t,adjusted,demand,eff);
+ let t=Math.min(MAX,Math.ceil(best.target/5)*5),sim=simulation(t,adjusted,demand,eff,true);
  let soc=clamp(num('soc',85),MIN,MAX),extra=Math.max(0,t-soc)/100*CAP/Math.sqrt(eff);
  $('solar').textContent=actual.toFixed(1)+' kWh';$('adjusted').textContent=(actual*(1-margin)).toFixed(1)+' kWh';
  $('target').textContent=t+'%';$('fill').style.width=t+'%';
  $('extra').textContent=extra.toFixed(2)+' kWh';$('cost').textContent='£'+(extra*NIGHT).toFixed(2);
  $('peak').textContent=sim.grid.toFixed(2)+' kWh';$('spill').textContent=sim.spill.toFixed(2)+' kWh';
+ renderChart(sim.points);
  $('reason').textContent=(test!==''?'TEST SCENARIO · ':'')+(t>=99?'Charge to your 99% maximum.':`Charge to ${t}% and leave ${((MAX-t)/100*CAP).toFixed(2)} kWh room below 99%.`)+(soc>=t?' Battery already at or above target; no force-charge top-up needed.':'');
 }
 async function refresh(){
